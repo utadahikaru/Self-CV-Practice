@@ -13,7 +13,7 @@ size = 64
 imgs = []
 labs = []
 
-def getPaddingSize(img):
+def getTheSizePadding(img):
     h, w, _ = img.shape
     top, bottom, left, right = (0,0,0,0)
     longest = max(h, w)
@@ -38,7 +38,7 @@ def readData(path , h=size, w=size):
 
             img = cv2.imread(filename)
 
-            top,bottom,left,right = getPaddingSize(img)
+            top,bottom,left,right = getTheSizePadding(img)
             # 将图片放大， 扩充图片边缘部分
             img = cv2.copyMakeBorder(img, top, bottom, left, right, cv2.BORDER_CONSTANT, value=[0,0,0])
             img = cv2.resize(img, (h, w))
